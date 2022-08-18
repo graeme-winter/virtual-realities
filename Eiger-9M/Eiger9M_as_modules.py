@@ -16,6 +16,7 @@ GAP_SLOW = 38
 N_FAST = 3
 N_SLOW = 6
 
+
 def blit(source_data_set, sink_data_sets):
     """Blit the data from individual modules from the regions of the source
     images to N_FAST x N_SLOW sink data sets"""
@@ -77,7 +78,9 @@ def split(input_h5, output_h5):
             for i in range(N_FAST):
 
                 source = h5py.VirtualSource(
-                    output_files[j*N_FAST + i][1], "data", shape=(frames, MOD_SLOW, MOD_FAST)
+                    output_files[j * N_FAST + i][1],
+                    "data",
+                    shape=(frames, MOD_SLOW, MOD_FAST),
                 )
                 f0 = i * (MOD_FAST + GAP_FAST)
                 f1 = f0 + MOD_FAST
